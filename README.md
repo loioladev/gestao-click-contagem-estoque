@@ -1,16 +1,7 @@
-# atualiza_estoque
+# Contagem de Estoque Gestão Click
 
-A new Flutter project.
+Um projeto de Flutter que auxilia a contagem e manutenção do estoque de uma empresa por meio da conexão com a API da empresa Gestão Click.
 
-## Getting Started
+## Sobre o Projeto
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Para utilizar o aplicativo em sua empresa, basta fazer a conexão com seu Firebase e, em 'lib/persistence', criar um arquivo .dart com as chaves de acesso para a conexão com a API.
