@@ -1,4 +1,5 @@
 import 'package:atualiza_estoque/components/loading_items.dart';
+import 'package:atualiza_estoque/components/snackbar_alert.dart';
 import 'package:atualiza_estoque/controller/stock_controller.dart';
 import 'package:flutter/material.dart';
 
@@ -16,10 +17,12 @@ class StockCards extends StatefulWidget {
 class _StockCardsState extends State<StockCards> {
   StockController _stockController = StockController();
 
-  _deleteItem(String id) {
+  _deleteItem(String id) async {
+    String aux = await _stockController.remove(id);
     setState(() {
-      _stockController.remove(id);
+      snackBarAlert(context, aux);
     });
+    FocusScope.of(context).unfocus();
   }
 
   @override
