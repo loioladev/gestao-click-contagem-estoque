@@ -67,8 +67,8 @@ class _AdminUserState extends State<AdminUser> {
                 flex: 7,
                 child: Container(
                   margin: const EdgeInsets.only(right: 10),
-                  child: createStockForm(
-                      "Email", userController, userInputType, _validateUser),
+                  child: createStockForm("Email", userController, userInputType,
+                      _validateUser, TextInputAction.next, () {}, null),
                 ),
               ),
               Container(

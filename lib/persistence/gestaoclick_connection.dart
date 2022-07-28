@@ -29,6 +29,30 @@ Future<Map<String, dynamic>> getInfo(Stock stock) async {
   res['codigo_interno'] = stock.code;
   res['valor_custo'] = responseJson['data']['valor_custo'];
   res['valor_venda'] = responseJson['data']['valor_venda'];
+
+  // Algumas informações extras para assegurar que nada ocorra de errado
+  res['codigo_barra'] = responseJson['data']['codigo_barra'];
+  res['largura'] = responseJson['data']['largura'];
+  res['altura'] = responseJson['data']['altura'];
+  res['comprimento'] = responseJson['data']['comprimento'];
+  res['ativo'] = responseJson['data']['ativo'];
+  res['descricao'] = responseJson['data']['descricao'];
+
+  // Informação do Fiscal reseta ao alterar, por isso incluir ela
+  res['ncm'] = responseJson['data']['fiscal']['ncm'];
+  res['cest'] = responseJson['data']['fiscal']['cest'];
+  res['peso_liquido'] = responseJson['data']['fiscal']['peso_liquido'];
+  res['peso_bruto'] = responseJson['data']['fiscal']['peso_bruto'];
+  res['valor_aproximado_tributos'] =
+      responseJson['data']['fiscal']['valor_aproximado_tributos'];
+  res['valor_fixo_pis'] = responseJson['data']['fiscal']['valor_fixo_pis'];
+  res['valor_fixo_pis_st'] =
+      responseJson['data']['fiscal']['valor_fixo_pis_st'];
+  res['valor_fixo_confins'] =
+      responseJson['data']['fiscal']['valor_fixo_confins'];
+  res['valor_fixo_confins_st'] =
+      responseJson['data']['fiscal']['valor_fixo_confins_st'];
+
   if (stock.mode == "alterar") {
     res['estoque'] = stock.quantity;
   } else {

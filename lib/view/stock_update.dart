@@ -33,6 +33,8 @@ class _StockUpdateState extends State<StockUpdate> {
   bool _validateQnt = false;
   bool _validateCode = false;
 
+  final FocusNode _firstFocus = FocusNode();
+
   _cleanTextField() {
     codeController.text = "";
     quantityController.text = "";
@@ -81,6 +83,15 @@ class _StockUpdateState extends State<StockUpdate> {
     return (aux || resFirebase);
   }
 
+  _pressButton() {
+    setState(() {
+      if (_verifyItem()) return;
+      _insertItem();
+      _cleanTextField();
+    });
+    _firstFocus.requestFocus();
+  }
+
   bool _verifyItem() {
     setState(() {
       codeController.text.isEmpty
@@ -122,16 +133,14 @@ class _StockUpdateState extends State<StockUpdate> {
             ),
           ),
           createStockForm("Código do produto", codeController, codeInputType,
-              _validateCode),
+              _validateCode, TextInputAction.next, () {}, _firstFocus),
           createStockForm("Quantidade do produto", quantityController,
-              qntInputType, _validateQnt),
+              qntInputType, _validateQnt, TextInputAction.done, () {
+            _pressButton();
+          }, null),
           CreateElevatedButton(
             functionToCall: () {
-              setState(() {
-                if (_verifyItem()) return;
-                _insertItem();
-                _cleanTextField();
-              });
+              _pressButton();
             },
             textButton: "Inserir",
           ),
